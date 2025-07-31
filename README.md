@@ -84,5 +84,3 @@ logs/
 ├── Sundial_ZeroShot_ETTh1_*.json
 └── ...
 ```
-
-This README reflects the repository state at time of KDD submission.
