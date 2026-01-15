@@ -1,0 +1,16 @@
+datasets
+gluonts
+numpy==2.1.3
+pandas
+pyarrow
+torch==2.4.0
+transformers==4.40.1
+arch
+tqdm
+torchmetrics
+scipy
+safetensors
+pyarrow 
+matplotlib
+accelerate
+h5py
