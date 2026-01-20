@@ -1,4 +1,4 @@
-# DualWeaver: Feature Fusion Surrogates for Multivariate Forecasting with Univariate Time Series Foundation Models
+# DualWeaver: Synergistic Feature Fusion Surrogates for Multivariate Forecasting with Univariate Time Series Foundation Models
 
 This repository contains the implementation for our ICML submission.
 
