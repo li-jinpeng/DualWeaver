@@ -71,9 +71,9 @@ class Model(nn.Module):
                     loss_origin = loss_origin.mean(dim=-1).reshape(B, M)
                     self.ltm.train()
 
-                re_loss = 2 * (loss1 + loss2) / (self.a.unsqueeze(0) + self.b.unsqueeze(0)) ** 2
+                re_loss = 2 * (loss1.mean(dim=0) + loss2.mean(dim=0)) / (self.a + self.b) ** 2
                 re_flag = re_loss < loss_origin
-                return (loss1.mean() + loss2.mean()) / 2 + torch.max(re_loss, loss_origin.detach()).mean(), re_flag
+                return (loss1.mean() + loss2.mean()) / 2 + torch.max(re_loss, loss_origin.mean(dim=0).detach()).mean(), re_flag
             else:
                 outputs = self.ltm.generate(
                     batch_x,
@@ -110,9 +110,9 @@ class Model(nn.Module):
                     loss_origin = loss_origin.reshape(B*M, -1).mean(dim=-1).reshape(B, M)
                     self.ltm.train()
 
-                re_loss = 2 * (loss1 + loss2) / (self.a.unsqueeze(0) + self.b.unsqueeze(0)) ** 2
+                re_loss = 2 * (loss1.mean(dim=0) + loss2.mean(dim=0)) / (self.a + self.b) ** 2
                 re_flag = re_loss < loss_origin
-                return (loss1.mean() + loss2.mean()) / 2 + torch.max(re_loss, loss_origin.detach()).mean(), re_flag
+                return (loss1.mean() + loss2.mean()) / 2 + torch.max(re_loss, loss_origin.mean(dim=0).detach()).mean(), re_flag
             else:
                 outputs = self.ltm.generate(
                     batch_x,
